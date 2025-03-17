@@ -1,0 +1,68 @@
+name: Publish Package
+
+on:
+  release:
+    types: [released]
+
+env:
+  POETRY_VERSION: 2.0.1
+  PYTHON_VERSION: 3.11  # Use latest
+
+jobs:
+  publish_package:
+    name: Publish Package
+    runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.release.target_commitish }} # This is the branch the release was created from. Normally main, but can be a dev branch
+
+      - name: Configure Git
+        if: ${{ github.event.release.target_commitish == 'main' }}
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git pull --tags -f
+
+      - uses: actions/setup-python@v2
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+      - uses: Gr1N/setup-poetry@v8
+        with:
+          poetry-version: ${{ env.POETRY_VERSION }}
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pypoetry/virtualenvs
+          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+      - name: Install the Package
+        run: poetry install
+      - name: Lint and build
+        run: poetry run poe publish
+      
+      - name: Commit docs into branch
+        run: |
+          git add docs/
+          git commit -m "Build docs - ${{ github.head_ref }}"
+
+      - name: Publish the package
+        uses: pypa/gh-action-pypi-publish@release/v1
+        if: ${{ github.event.release.target_commitish == 'main' }}
+        with:
+          packages-dir: dist/
+
+      - name: Commit files
+        if: ${{ github.event.release.target_commitish == 'main' }}
+        run: |
+          git pull --tags -f
+          git commit -m "Bump package version" -a
+
+      - name: Push changes
+        if: ${{ github.event.release.target_commitish == 'main' }}
+        run: |
+          git push
