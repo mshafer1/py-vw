@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "vw"
+name = "import-vw"
 version = "0.1.1a0"
 description = "Detect if running in a testing environment and control if methods act (either no-op in a test, or only act in a test)"
 authors = ["Matthew <2565361+mshafer1@users.noreply.github.com>"]
@@ -25,6 +25,7 @@ classifiers = [
     "Programming Language :: Python :: Implementation :: CPython",
     "Programming Language :: Python :: Implementation :: PyPy",
 ]
+packages = [{ include = "vw" }]
 
 [tool.poetry.dependencies]
 python = "^3.8.1"
