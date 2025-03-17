@@ -2,7 +2,7 @@
 name = "import-volkswagen"
 version = "0.1.2a0"
 description = "Detect if running in a testing environment and control if methods act (either no-op in a test, or only act in a test)"
-authors = ["Matthew <2565361+mshafer1@users.noreply.github.com>"]
+authors = ["mshafer1 <2565361+mshafer1@users.noreply.github.com>"]
 license = "MIT"
 readme = "README.md"
 repository = "https://github.com/mshafer1/py-vw"
