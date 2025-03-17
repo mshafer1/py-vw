@@ -36,12 +36,10 @@ jobs:
       - uses: Gr1N/setup-poetry@v8
         with:
           poetry-version: ${{ env.POETRY_VERSION }}
-      - uses: actions/cache@v2
-        with:
-          path: ~/.cache/pypoetry/virtualenvs
-          key: ${{ runner.os }}-poetry-${{ hashFiles('poetry.lock') }}
+
       - name: Install the Package
         run: poetry install
+
       - name: Lint and build
         run: poetry run poe publish
       
