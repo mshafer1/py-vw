@@ -1,7 +1,7 @@
 """Docs config."""
 
 extensions = ["autoapi.extension"]
-html_baseurl = '/py-vw/'
+html_baseurl = "/py-vw/"
 
 # region: autoapi
 autoapi_dirs = ["../vw"]
