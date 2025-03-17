@@ -27,6 +27,9 @@ classifiers = [
 ]
 packages = [{ include = "vw" }]
 
+[tool.ni-python-styleguide]
+application-import-names = "vw"
+
 [tool.poetry.dependencies]
 python = "^3.8.1"
 python-decouple = "^3.8"
