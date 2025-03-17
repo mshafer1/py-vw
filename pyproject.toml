@@ -1,10 +1,30 @@
 [tool.poetry]
 name = "vw"
 version = "0.1.1a0"
-description = "Detect if running in a testing enviroment and control if methods act (either no-op in a test, or only act in a test)"
+description = "Detect if running in a testing environment and control if methods act (either no-op in a test, or only act in a test)"
 authors = ["Matthew <2565361+mshafer1@users.noreply.github.com>"]
 license = "MIT"
 readme = "README.md"
+repository = "https://github.com/mshafer1/py-vw"
+documentation = "https://mshafer1.github.io/py-vw/"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Manufacturing",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: POSIX",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: Implementation :: CPython",
+    "Programming Language :: Python :: Implementation :: PyPy",
+]
 
 [tool.poetry.dependencies]
 python = "^3.8.1"
