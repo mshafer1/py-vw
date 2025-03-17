@@ -1,0 +1,175 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcom to the VW Docs! &mdash; Python  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=eafc0fe6" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js?v=b3ba4146"></script>
+      <script src="_static/doctools.js?v=888ff710"></script>
+      <script src="_static/sphinx_highlight.js?v=4825356b"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="API Reference" href="autoapi/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            Python
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Python</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Welcom to the VW Docs!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="welcom-to-the-vw-docs">
+<h1>Welcom to the VW Docs!<a class="headerlink" href="#welcom-to-the-vw-docs" title="Permalink to this heading"></a></h1>
+<section id="vw">
+<h2>VW<a class="headerlink" href="#vw" title="Permalink to this heading"></a></h2>
+<p>This module provides decorators that turn on or off the decorated method depending on
+whether it is running in a testing environment or not.</p>
+<p><strong>NOTE</strong>: The name <code class="docutils literal notranslate"><span class="pre">vw</span></code> was chosen for convenience and is not intended as commentary on any political topic real or imagined.</p>
+</section>
+<section id="why">
+<h2>Why?<a class="headerlink" href="#why" title="Permalink to this heading"></a></h2>
+<p>Have you ever found yourself wanting an easy way to turn off the logging when running in tests?</p>
+<p>What about database access?</p>
+<p><a class="reference external" href="https://docs.python.org/3/library/unittest.mock.html">Mocking</a> works well for your own code, but what about when a user imports your library?</p>
+<p>This is what this tool is meant to solve.</p>
+</section>
+<section id="controlling">
+<h2>Controlling<a class="headerlink" href="#controlling" title="Permalink to this heading"></a></h2>
+<p>By using <a class="reference external" href="https://pypi.org/project/python-decouple/">python-decouple</a>, the following variables can be set in a <code class="docutils literal notranslate"><span class="pre">settings.ini</span></code> file, or a <code class="docutils literal notranslate"><span class="pre">.env</span></code> file, or as variables in the environment.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">VW_IGNORE</span></code> -&gt; causes VW to ignore if it is in a test environment (<code class="docutils literal notranslate"><span class="pre">no_op</span></code> still acts, and <code class="docutils literal notranslate"><span class="pre">tests_only</span></code> will not)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">VW_ALWAYS</span></code> -&gt; (NOTE: <code class="docutils literal notranslate"><span class="pre">VW_IGNORE</span></code> takes precedence over this var) causes VW to behave like it is always in a test environment (<code class="docutils literal notranslate"><span class="pre">no_op</span></code> is always a no-op)</p></li>
+</ul>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h2>
+<ol class="arabic">
+<li><p>Using an in-memory db for tests:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">vw</span>
+
+<span class="n">_con</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;:memory:&quot;</span> <span class="k">if</span> <span class="n">vw</span><span class="o">.</span><span class="n">is_test_env</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;database.sqlite3&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Logging to a local file for tests</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">vw</span>
+
+<span class="n">_root_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">_root_logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="s2">&quot;test.log&quot;</span> <span class="k">if</span> <span class="n">vw</span><span class="o">.</span><span class="n">is_test_env</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;//path/to/server/log.txt&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</li>
+<li><p>Avoid doing things in unit/component/integration tests that should only be done in production</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">vw</span>
+
+<span class="nd">@vw</span><span class="o">.</span><span class="n">no_op</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">send_tornado_warning</span><span class="p">():</span>
+    <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="autoapi/vw/index.html">vw</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/vw/index.html#submodules">Submodules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/vw/index.html#functions">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autoapi/vw/index.html#package-contents">Package Contents</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="autoapi/index.html" class="btn btn-neutral float-right" title="API Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright .</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+vw.config
+=========
+
+.. py:module:: vw.config
+
+.. autoapi-nested-parse::
+
+   Configuration variables for vw.
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   vw.config.VW_IGNORE
+   vw.config.VW_ALWAYS
+
+
+Module Contents
+---------------
+
+.. py:data:: VW_IGNORE
+   :type:  Optional[bool]
+
+   If set, this value can be used to specify to ignore whether in a testing environment or not.
+
+
+.. py:data:: VW_ALWAYS
+   :type:  Optional[bool]
+
+   If set, this value causes all methods to behave as if in a testing environment.
+
+

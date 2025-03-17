@@ -1,0 +1,67 @@
+vw
+==
+
+.. py:module:: vw
+
+.. autoapi-nested-parse::
+
+   Decorators no-op or be active depending on whether or not it is in a testing environment.
+
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/vw/config/index
+   /autoapi/vw/lazy/index
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   vw.is_test_env
+   vw.clear_env_cache
+   vw.no_op
+   vw.tests_only
+
+
+Package Contents
+----------------
+
+.. py:function:: is_test_env()
+
+   Return if it is a test environment.
+
+
+.. py:function:: clear_env_cache()
+
+   Clear the cache value of whether it is a test environment or not.
+
+
+.. py:function:: no_op(func)
+
+   Decorator to make a function a no-op if the current environment is a test environment.
+
+   Args:
+       func (function): The function to decorate.
+
+   Returns:
+       function: The decorated function.
+
+
+.. py:function:: tests_only(func)
+
+   Decorator to make a function a no-op if the current environment is a test environment.
+
+   Args:
+       func (function): The function to decorate.
+
+   Returns:
+       function: The decorated function.
+
+

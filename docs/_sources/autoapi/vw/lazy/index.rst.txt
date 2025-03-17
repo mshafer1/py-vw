@@ -1,0 +1,45 @@
+vw.lazy
+=======
+
+.. py:module:: vw.lazy
+
+.. autoapi-nested-parse::
+
+   Decorators that don't evaluate until they are first invoked.
+
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   vw.lazy.no_op
+   vw.lazy.tests_only
+
+
+Module Contents
+---------------
+
+.. py:function:: no_op(func)
+
+   Decorator to make a function no-op if the current environment is a test environment.
+
+   Args:
+       func (function): The function to decorate.
+
+   Returns:
+       function: The decorated function.
+
+
+.. py:function:: tests_only(func)
+
+   Decorator to make a function only run if the current environment is a test environment.
+
+   Args:
+       func (function): The function to decorate.
+
+   Returns:
+       function: The decorated function.
+
+
