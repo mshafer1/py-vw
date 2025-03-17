@@ -5,6 +5,10 @@ whether it is running in a testing environment or not.
 
 **NOTE**: The name `vw` was chosen for convenience and is not intended as commentary on any political topic real or imagined.
 
+# Installation
+
+`pip install import-volkswagen`
+
 # Why?
 
 Have you ever found yourself wanting an easy way to turn off the logging when running in tests?
